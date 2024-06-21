@@ -14,5 +14,29 @@
         <input id="password" type="password" name="password" placeholder="password"/>
         <input type="submit" value="login"/>
     </form>
+
+
+    login page csrf 설정 
+    <form action="/loginProc" method="post" name="loginForm">
+        <input type="text" name="username" placeholder="아이디"/>
+        <input type="password" name="password" placeholder="비밀번호"/>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="submit" value="로그인"/>
+    </form>
+
+
+    <!--
+    ** ajax 요청시
+    HTML <head> 구획에 아래 요소 추가
+
+    <meta name="_csrf" content="{{_csrf.token}}"/>
+    <meta name="_csrf_header" content="{{_csrf.headerName}}"/> 
+    
+    ajax 요청시 위의 content 값을 가져온 후 함께 요청
+    XMLHttpRequest 요청시 setRequestHeader를 통해 _csrf, _csrf_header Key에 대한 토큰 값 넣어 요청
+
+    -->
+
+
 </body>
 </html>
